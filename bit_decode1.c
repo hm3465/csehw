@@ -21,10 +21,10 @@ unsigned char create_key(void)
     unsigned char nibble = 0;
     int index = 0;
 
-    /* Prompt user for the 4-bit binary key. */
+    /* Prompts user for the 4-bit binary key. */
     printf("Enter 4-bit key: ");
 
-    /* Read and process exactly 4 binary digits immediately. */
+    /* Read and process exactly 4 binary digits. */
     while (index < 4) {
         int ch = getchar();
 
@@ -48,14 +48,14 @@ unsigned char create_key(void)
     return (unsigned char)((nibble << 4) | nibble);
 }
 
-/* Rotates an 8-bit value left by one bit and returns the rotated result. */
+/* Rotates an 8-bit value left by one bit. */
 unsigned char rotate_left(unsigned char value)
 {
     /* Move MSB to LSB while shifting everything else left. */
     return (unsigned char)((value << 1) | (value >> 7));
 }
 
-/* Rotates an 8-bit value right by one bit and returns the rotated result. */
+/* Rotates an 8-bit value right by one bit. */
 unsigned char rotate_right(unsigned char value)
 {
     /* Move LSB to MSB while shifting everything else right. */
@@ -70,7 +70,7 @@ int main(void)
     int separator = 0;
     int position = 0;
 
-    /* Prompt user for the encrypted hex stream. */
+    /* Prompt user for the encrypted stream. */
     printf("Enter encoded text: ");
 
     /* Read each 2-digit hex value, then read the following separator character. */
@@ -81,7 +81,7 @@ int main(void)
             unsigned char unrotated;
             unsigned char plain;
 
-            /* Encryption rotated left on odd positions, right on even; undo that. */
+            /* Encryption rotated left on odd positions, right on even*/
             if ((position % 2) == 0) {
                 unrotated = rotate_right(value);
             } else {

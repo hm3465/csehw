@@ -21,9 +21,6 @@ unsigned char create_key(void)
     unsigned char nibble = 0;
     int index = 0;
 
-    /* * Wrap the prompt in ifdef so it can be toggled off for 
-     * automated grading/redirection.
-     */
 #ifdef PROMPT
     printf("Enter 4-bit key: ");
 #endif
