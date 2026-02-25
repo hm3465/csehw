@@ -2,7 +2,7 @@
 
 /*
  * Programmer: Harshith Middela
- * Lab 2 bit stream decoder
+ * Lab 2 bit stream decoder (redirected-input version).
  * This program reads a 4-bit key and an encrypted hexadecimal stream,
  * then decrypts each value by reversing alternating rotations and XORing
  * with the expanded 8-bit key, printing each decoded ASCII character.
@@ -21,7 +21,6 @@ unsigned char create_key(void)
     unsigned char nibble = 0;
     int index = 0;
 
-/* Prompt the user for the 4-bit binary key. */
 #ifdef PROMPT
     printf("Enter 4-bit key: ");
 #endif
@@ -72,7 +71,6 @@ int main(void)
     int separator = 0;
     int position = 0;
 
-/* Prompt user for the encrypted hex stream. */
 #ifdef PROMPT
     printf("Enter encoded text: ");
 #endif
@@ -110,7 +108,7 @@ int main(void)
         }
     }
 
-    /* Finish output on a clean line. */
+    /* Finish output on a clean line for shell prompt positioning. */
     putchar('\n');
 
     return 0;
