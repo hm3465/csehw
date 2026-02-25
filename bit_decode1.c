@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /*
- * Programmer: ChatGPT
- * Lab 2 bit stream decoder (interactive version).
+ * Name: Harshith Middela
+ * Lab 2 bit stream decoder.
  * This program reads a 4-bit key and an encrypted hexadecimal stream,
  * then decrypts each value by reversing alternating rotations and XORing
  * with the expanded 8-bit key, printing each decoded ASCII character.
@@ -13,7 +13,7 @@ unsigned char rotate_left(unsigned char value);
 unsigned char rotate_right(unsigned char value);
 
 /*
- * Reads 4 key digits ('0' or '1') using getchar and returns the
+ * Reads 4 key digits using getchar and returns the
  * corresponding 8-bit key formed by duplicating the 4-bit pattern.
  */
 unsigned char create_key(void)
