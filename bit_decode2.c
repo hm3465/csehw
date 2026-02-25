@@ -13,7 +13,7 @@ unsigned char rotate_left(unsigned char value);
 unsigned char rotate_right(unsigned char value);
 
 /*
- * Reads 4 key digits ('0' or '1') using getchar and returns the
+ * Reads 4 key digits using getchar and returns the
  * corresponding 8-bit key formed by duplicating the 4-bit pattern.
  */
 unsigned char create_key(void)
@@ -25,7 +25,7 @@ unsigned char create_key(void)
     printf("Enter 4-bit key: ");
 #endif
 
-    /* Read and process exactly 4 binary digits immediately. */
+    /* Read and process exactly 4 binary digits. */
     while (index < 4) {
         int ch = getchar();
 
@@ -71,20 +71,19 @@ int main(void)
     int separator = 0;
     int position = 0;
 
-    /* Wrap the prompt in ifdef as required by the rubric. */
 #ifdef PROMPT
     printf("Enter encoded text: ");
 #endif
 
     /* Read each 2-digit hex value, then read the following separator character. */
     while (scanf("%2x", &cipher) == 1) {
-        separator = getchar(); /* Rubric check: separator is an int */
+        separator = getchar();
         {
             unsigned char value = (unsigned char)cipher;
             unsigned char unrotated;
             unsigned char plain;
 
-            /* Encryption rotated left on odd positions, right on even; undo that. */
+            /* Encryption rotated left on odd positions, right on even*/
             if ((position % 2) == 0) {
                 unrotated = rotate_right(value);
             } else {
@@ -103,13 +102,13 @@ int main(void)
             break;
         }
 
-        /* Rubric check: Loop ends when EOF is found. */
+        /* If EOF appears as separator, end promptly as well. */
         if (separator == EOF) {
             break;
         }
     }
 
-    /* Finish output on a clean line. */
+    /* Finish output on a clean line for shell prompt positioning. */
     putchar('\n');
 
     return 0;
